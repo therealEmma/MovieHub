@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { Text, Box, Image, SimpleGrid } from "@chakra-ui/react";
+import { Text, SimpleGrid } from "@chakra-ui/react";
+import MovieCard from "./MovieCard";
 
-interface Movie {
+export interface Movie {
   id: number;
   backdrop_path: string;
   title: string;
@@ -25,7 +26,7 @@ const Movie = () => {
 
   return (
     <>
-      {error && <Text color="red">{error}</Text>}
+      {/* {error && <Text color="red">{error}</Text>}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} padding={10}>
         {movies.map((movie) => (
           <Box key={movie.id} borderWidth="1px" borderRadius="lg" overflow="hidden">
@@ -39,6 +40,14 @@ const Movie = () => {
               <Text fontSize="xl" fontWeight="bold">{movie.title}</Text>
             </Box>
           </Box>
+        ))}
+      </SimpleGrid> */}
+      {error && <Text color={'red'}>{error}</Text>}
+      <SimpleGrid columns={{
+        base: 1, md:2, lg:3
+      }}>
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
         ))}
       </SimpleGrid>
     </>

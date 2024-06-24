@@ -1,8 +1,18 @@
+import { Card, CardBody, Heading, Image } from "@chakra-ui/react"
+import { Movie } from "./MovieGrid"
 
+interface Props{
+     movie : Movie
+}
 
-const MovieCard = () => {
+const MovieCard = ({movie} : Props) => {
   return (
-    <div>MovieCard</div>
+    <Card>
+        <Image src={movie.backdrop_path} />
+        <CardBody>
+            <Heading>{movie.title}</Heading>
+        </CardBody>
+    </Card>
   )
 }
 
