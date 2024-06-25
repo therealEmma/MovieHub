@@ -1,4 +1,4 @@
-import { Text, SimpleGrid } from "@chakra-ui/react";
+import { Text, SimpleGrid, Box } from "@chakra-ui/react";
 import MovieCard from "./MovieCard";
 import useMovies from "../Hooks/useMovies";
 
@@ -13,9 +13,13 @@ const MovieGrid = () => {
           md: 2,
           lg: 3,
         }}
-      spacing={5} paddingX={5}> 
+        spacing={5}
+        paddingX={5}
+      >
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <Box key={movie.id} role="group">
+            <MovieCard movie={movie} />
+          </Box>
         ))}
       </SimpleGrid>
     </>

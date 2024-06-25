@@ -9,7 +9,12 @@ interface Props {
 
 const MovieCard = ({ movie }: Props) => {
   return (
-    <Card borderRadius={20} overflow={"hidden"} role="group">
+    <Card 
+      borderRadius={20} 
+      overflow={"hidden"} 
+      position="relative"
+      _hover={{ ".hoverText": { opacity: 1, maxHeight: '100px' } }}
+    >
       <Image src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt={movie.title} />
       <CardBody>
         <HStack justifyContent={"space-between"}>
@@ -18,8 +23,8 @@ const MovieCard = ({ movie }: Props) => {
         </HStack>
         <Box 
           mt={2}
+          className="hoverText"
           opacity={0} 
-          _groupHover={{ opacity: 1, maxH: '100px' }} 
           transition="opacity 0.3s, max-height 0.3s"
           maxH="0"
           overflow="hidden"
