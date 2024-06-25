@@ -1,39 +1,21 @@
-import { List, ListItem } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
+import { Button, List, ListItem } from "@chakra-ui/react";
+import useGenres, { Genre } from "../Hooks/useGenres";
 
-export interface Genre {
-  id: number;
-  name: string;
+interface Props{
+    onSelectGenre: (genre: Genre) => void
 }
 
-export interface FetchGenreResponse {
-  genres: Genre[];
-}
 
-const GenreList = () => {
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [error, setError] = useState<string>("");
-
-  useEffect(() => {
-    apiClient
-      .get<FetchGenreResponse>("/3/genre/movie/list")
-      .then((res) => {
-        console.log(res.data.genres); // Correct property name
-        setGenres(res.data.genres);
-      })
-      .catch((err) => {
-        console.error(err.message);
-        setError(err.message);
-      });
-  }, []);
-
+const GenreList = ({onSelectGenre} : Props) => {
+  const {genres, error} = useGenres()
   return (
     <>
       {error && <p>{error}</p>}
       <List>
         {genres.map((genre) => (
-          <ListItem padding={1} key={genre.id}>{genre.name}</ListItem>
+          <ListItem padding={1} key={genre.id}>
+            <Button onClick={() => onSelectGenre(genre)} variant={'link'}>{genre.name}</Button>
+          </ListItem>
         ))}
       </List>
     </>

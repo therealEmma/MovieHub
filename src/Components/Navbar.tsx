@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <HStack spacing={5} paddingY={5}>
         <Image boxSize={10} src={logo} />
-        <Input placeholder="Search Movie..." />
+        <Input borderRadius={20} placeholder="Search Movie..." />
     </HStack>
   )
 }

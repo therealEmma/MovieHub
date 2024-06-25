@@ -7,7 +7,7 @@ export interface Movie {
   backdrop_path: string;
   title: string;
   popularity: number
-  overview: string;
+  overview: string
 }
 
 export interface FetchResponse {

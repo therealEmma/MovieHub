@@ -18,7 +18,7 @@ function App() {
         </GridItem>
         <Show above="lg">
           <GridItem area="aside">
-            <GenreList />
+            <GenreList onSelectGenre={(genre) => console.log(genre)} />
           </GridItem>
         </Show>
         <GridItem area="main">
