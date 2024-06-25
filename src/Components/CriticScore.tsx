@@ -1,8 +1,12 @@
-import React from 'react'
+import { Badge } from "@chakra-ui/react"
 
-const CriticScore = () => {
+interface Props{
+    score: number
+}
+
+const CriticScore = ({score} : Props) => {
   return (
-    <div>CriticScore</div>
+    <Badge>{score}</Badge>
   )
 }
 
