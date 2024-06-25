@@ -7,27 +7,30 @@ export interface Movie {
   backdrop_path: string;
   title: string;
 }
-interface FetchResponse {
+
+export interface FetchResponse {
   results: Movie[];
 }
 
 const useMovies = () => {
-  const [movies, setMovie] = useState<Movie[]>([]);
-  const [error, setError] = useState(" ");
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     const controller = new AbortController();
     apiClient
-      .get<FetchResponse>("/3/movie/popular", {signal: controller.signal})
-      .then((res) => setMovie(res.data.results))
+      .get<FetchResponse>("/3/movie/popular", { signal: controller.signal })
+      .then((res) => setMovies(res.data.results))
       .catch((err) => {
-        if (err instanceof CanceledError) setError(err.message)
+        if (!(err instanceof CanceledError)) {
+          setError(err.message);
+        }
       });
 
-      return () => controller.abort();
+    return () => controller.abort();
   }, []);
 
-  return {movies, error}
+  return { movies, error };
 };
 
 export default useMovies;
