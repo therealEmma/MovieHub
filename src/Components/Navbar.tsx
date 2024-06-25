@@ -1,10 +1,10 @@
 import { HStack, Image, Input } from "@chakra-ui/react"
-import logo from "../assets/pngwing.com.png"
+import logo from "../assets/netflix-logo-png-2574.png"
 
 const Navbar = () => {
   return (
-    <HStack spacing={5} paddingX={10}>
-        <Image width={'200px'} src={logo} />
+    <HStack spacing={5} paddingY={5}>
+        <Image boxSize={10} src={logo} />
         <Input placeholder="Search Movie..." />
     </HStack>
   )

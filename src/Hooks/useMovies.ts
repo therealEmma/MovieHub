@@ -6,6 +6,7 @@ export interface Movie {
   id: number;
   backdrop_path: string;
   title: string;
+  popularity: number
 }
 
 export interface FetchResponse {
@@ -20,7 +21,10 @@ const useMovies = () => {
     const controller = new AbortController();
     apiClient
       .get<FetchResponse>("/3/movie/popular", { signal: controller.signal })
-      .then((res) => setMovies(res.data.results))
+      .then((res) => {
+        setMovies(res.data.results)
+        console.log(res.data.results)
+      })
       .catch((err) => {
         if (!(err instanceof CanceledError)) {
           setError(err.message);

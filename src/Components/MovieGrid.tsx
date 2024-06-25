@@ -13,7 +13,7 @@ const MovieGrid = () => {
           md: 2,
           lg: 3,
         }}
-      spacing={10} > 
+      spacing={5} paddingX={5}> 
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

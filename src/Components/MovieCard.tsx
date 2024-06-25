@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, Image } from "@chakra-ui/react"
+import {  Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react"
 import { Movie } from "../Hooks/useMovies"
 
 interface Props{
@@ -10,7 +10,10 @@ const MovieCard = ({movie} : Props) => {
     <Card borderRadius={20} overflow={"hidden"}>
         <Image src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} />
         <CardBody>
+          <HStack>
             <Heading fontSize={'2xl'}>{movie.title}</Heading>
+
+          </HStack>
         </CardBody>
     </Card>
   )

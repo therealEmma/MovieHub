@@ -1,12 +1,13 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import MovieGrid from "./Components/MovieGrid";
-import Navbar from "./Components/Navbar";
+
 import GenreList from "./Components/GenreList";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
     <>
-      <Grid
+      <Grid paddingX={5}
         templateAreas={{
           base: `"nav" "main"`,
           lg: `"nav nav" "aside main"`,

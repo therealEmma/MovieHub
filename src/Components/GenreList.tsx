@@ -33,7 +33,7 @@ const GenreList = () => {
       {error && <p>{error}</p>}
       <List>
         {genres.map((genre) => (
-          <ListItem key={genre.id}>{genre.name}</ListItem>
+          <ListItem padding={1} key={genre.id}>{genre.name}</ListItem>
         ))}
       </List>
     </>
